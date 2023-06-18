@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.5",
     "aos": "^2.3.4",
     "daisyui": "^2.51.6",
     "firebase": "^9.22.0",
