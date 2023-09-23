@@ -50,7 +50,7 @@ const Footer = () => {
               Products
             </Link>
             <Link href="/contact" color="inherit" style={{ display: 'block', marginBottom: '8px' }}>
-              Contact Us
+              Contact Us 
             </Link>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
