@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, ListItemIcon, Collapse } from '@mui/material';
 import { Menu as MenuIcon, Close as CloseIcon, Search, ShoppingCart, Person, ExpandMore, ExpandLess } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const Menu = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -21,10 +22,28 @@ const Menu = () => {
   return (
     <>
       <AppBar position="static" color="secondary">
-        <Toolbar>
+        <Toolbar className='flex justify-between'>
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleMenu}>
             {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
+          <div className='lg:block hidden'>
+           <div>
+            <ul className='flex gap-2'>
+              <li>
+                <Link to='/'>Home</Link>
+              </li>
+              <li>
+                <Link to='/'>Categories</Link>
+              </li>
+              <li>
+                <Link to='/'>Dietary</Link>
+              </li>
+              <li>
+                <Link to='/'>Shops</Link>
+              </li>
+            </ul>
+           </div>
+          </div>
           <div className="text-white flex items-center gap-5">
             <IconButton color="inherit">
               <Search />
@@ -36,24 +55,31 @@ const Menu = () => {
               <Person />
             </IconButton>
           </div>
+       
         </Toolbar>
       </AppBar>
       <Drawer  anchor="left" open={isMenuOpen} onClose={toggleMenu} style={{ width: '600px' }}>
         <List>
           <ListItem button onClick={closeMenu}>
-            <ListItemText primary="About" />
+            <ListItemText primary="Categories" />
           </ListItem>
           <ListItem button onClick={toggleServices}>
-            <ListItemText primary="Services" />
+            <ListItemText primary="Dietary" />
             {isServicesOpen ? <ExpandLess /> : <ExpandMore />}
           </ListItem>
           <Collapse in={isServicesOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItem button onClick={closeMenu}>
-                <ListItemText primary="Service 1" />
+                <ListItemText primary="- Vegetarian" />
               </ListItem>
               <ListItem button onClick={closeMenu}>
-                <ListItemText primary="Service 2" />
+                <ListItemText primary="- Kakogenic" />
+              </ListItem>
+              <ListItem button onClick={closeMenu}>
+                <ListItemText primary="- Mediterranean" />
+              </ListItem>
+              <ListItem button onClick={closeMenu}>
+                <ListItemText primary="- Organic" />
               </ListItem>
               {/* Add more services as needed */}
             </List>
