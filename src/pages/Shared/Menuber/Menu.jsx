@@ -20,7 +20,7 @@ const Menu = () => {
 
   return (
     <>
-      <AppBar position="static" color="primary">
+      <AppBar position="static" color="secondary">
         <Toolbar>
           <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleMenu}>
             {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
@@ -38,7 +38,7 @@ const Menu = () => {
           </div>
         </Toolbar>
       </AppBar>
-      <Drawer anchor="left" open={isMenuOpen} onClose={toggleMenu} style={{ width: '600px' }}>
+      <Drawer  anchor="left" open={isMenuOpen} onClose={toggleMenu} style={{ width: '600px' }}>
         <List>
           <ListItem button onClick={closeMenu}>
             <ListItemText primary="About" />

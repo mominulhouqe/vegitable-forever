@@ -22,12 +22,8 @@
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
     "react-fontawesome": "^1.7.1",
     "react-icons": "^4.9.0",
-=======
-    "react-icons": "^4.10.1",
->>>>>>> d50c05efeefb7092731b4afa9b78f4beda3b66a9
     "react-router-dom": "^6.11.2",
     "sort-by": "^1.2.0",
     "styled-components": "^5.3.11",
