@@ -11,17 +11,21 @@ import './BestSeller.css'
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
 
-
 import { FaEye } from 'react-icons/fa';
-
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import img1 from '../../../assets/vagitable05.png'
-import { Button } from '@mui/material';
+import { Button, Modal } from '@mui/material'; // Assuming you have a Modal component
+import { Link } from 'react-router-dom';
 
 const BestSeller = () => {
     const swiperRef = useRef(null);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
+    // Step 1: Create state to keep track of item counts
+    const [itemCounts, setItemCounts] = useState({});
+    const [modalOpen, setModalOpen] = useState(false); // Step 1: Create state for modal
+    const [selectedItem, setSelectedItem] = useState(null); // Step 3: Store selected item data
+
     const items = [
         {
             id: 1,
@@ -109,6 +113,32 @@ const BestSeller = () => {
             }
         }
     }
+
+    // Step 2: Function to increment item count
+    const incrementItemCount = (itemId) => {
+        setItemCounts((prevCounts) => ({
+            ...prevCounts,
+            [itemId]: (prevCounts[itemId] || 0) + 1,
+        }));
+    };
+
+    // Step 3: Function to decrement item count
+    const decrementItemCount = (itemId) => {
+        setItemCounts((prevCounts) => ({
+            ...prevCounts,
+            [itemId]: Math.max((prevCounts[itemId] || 0) - 1, 0),
+        }));
+    };
+
+    const openModal = (item) => { // Step 2: Function to open the modal
+        setSelectedItem(item);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => { // Optional: Function to close the modal
+        setModalOpen(false);
+    };
+
     return (
         <div className='bg-white p-2'>
             <div className='bg-white my-5 text-2xl font-semibold'>
@@ -120,7 +150,7 @@ const BestSeller = () => {
                     // When window width is <= 576px
                     576: {
                         slidesPerView: 2,
-                        spaceBetween: 10,
+                        spaceBetween: 20,
                     },
                     // When window width is <= 768px
                     768: {
@@ -129,13 +159,13 @@ const BestSeller = () => {
                     },
                     // When window width is <= 992px
                     992: {
-                        slidesPerView: 4,
-                        spaceBetween: 30,
+                        slidesPerView: 3,
+                        spaceBetween: 20,
                     },
                     // When window width is <= 1200px
                     1200: {
-                        slidesPerView: 5,
-                        spaceBetween: 35,
+                        slidesPerView: 4,
+                        spaceBetween: 17,
                     },
                 }}
                 navigation={{
@@ -148,40 +178,53 @@ const BestSeller = () => {
                 }}
                 className="mySwiper bg-white"
             >
-                {items.map((item) => (
-                    <SwiperSlide key={item.id}>
+                {items.map((item, index) => (
+                    <SwiperSlide key={index}>
                         <div className="border rounded-md shadow-2xl p-2">
-                            <span className="bg-[#02B290] p-2 text-sm text-white border rounded-xl relative right-[86px]">
+                            <button className="bg-[#02B290] text-sm text-white border rounded-xl relative right-28 btn-sm ">
                                 {item.label}
-                            </span>
+                            </button>
                             <div className="image-container">
-                                <img src={img1} alt="" className="imags " />
-                            </div>
-                            <div>
-                                <div className="flex gap-3">
-                                    <h6>$ {item.price}</h6>
-                                    <h6 className="line-through">$ {item.originalPrice}</h6>
+                                <img src={img1} alt="" className="imags  lg:relative" />
+                                <div>
+                                    <button
+                                        className='btn border-none btn-sm absolute rounded-full lg:right-6  mb-2 bg-[#02B290] hover:bg-lime-600 '
+                                        onClick={() => openModal(item)} // Step 5: Open the modal
+                                    >
+                                        +
+                                    </button>
                                 </div>
-                                <p>{item.name}</p>
-                                <p>{item.quantity}</p>
                             </div>
+
+                            <div>
+                                <div className="flex gap-3 my-4">
+                                    <h6 className='font-semibold'>$ {item.price}</h6>
+                                    <h6 className="line-through  text-slate-400 text-sm">$ {item.originalPrice}</h6>
+                                </div>
+                                <p className='text-sm text-left'>{item.name}</p>
+                                <p className='text-sm text-left text-slate-600 my-2'>{item.quantity}</p>
+                            </div>
+
                         </div>
                     </SwiperSlide>
                 ))}
+                
                 <SwiperSlide>
-                    No More
+                    <div className='link justify-center items-center mt-[50%] text-[#02B290] '>
+                        <Link to='/'> <FaArrowRight className='rounded-full bg-slate-50' /> See all</Link>
+                    </div>
                 </SwiperSlide>
             </Swiper>
             <div className='flex justify-center my-2'>
                 <button
-                    className={`bg-white hover:text-white hover:bg-[#02B290] border  rounded-full px-4 py-2 mr-2 ${isBeginning ? 'bg-gray-300 cursor-not-allowed' : ''}`}
+                    className={`bg-white hover:text-white hover:bg-[#02B290] border shadow-md rounded-full px-4 py-2 mr-2 ${isBeginning ? 'bg-gray-300 cursor-not-allowed' : ''}`}
                     onClick={goPrev}
                     disabled={isBeginning}
                 >
                     <FaArrowLeft />
                 </button>
                 <button
-                    className={`bg-white border hover:text-white hover:bg-[#02B290]  rounded-full px-4 py-2 ${isEnd ? 'bg-gray-300 cursor-not-allowed' : ''}`}
+                    className={`bg-white shadow-md border hover:text-white hover:bg-[#02B290]  rounded-full px-4 py-2 ${isEnd ? 'bg-gray-300 cursor-not-allowed' : ''}`}
                     onClick={goNext}
                     disabled={isEnd}
                 >
