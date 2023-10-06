@@ -5,6 +5,7 @@ import BestSeller from '../BestSeller/BestSeller';
 import FreshVegitable from '../FreshVegitable/FreshVegitable';
 import Chips from '../ChipsCollection/Chips';
 import Curated from '../CuratedCollection/Curated';
+import Download from '../Downloads/Download';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <FreshVegitable />
             <Chips />
             <Curated />
+            <Download />
         </div>
     );
 };
