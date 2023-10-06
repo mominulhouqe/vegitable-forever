@@ -150,7 +150,7 @@ const FreshVegitable = () => {
                                     </button>
                                 </div>
                             </div>
-
+                            
                             <div>
                                 <div className="flex gap-1 my-1">
                                     <h6 className='font-semibold text-sm'>$ {item.price}</h6>

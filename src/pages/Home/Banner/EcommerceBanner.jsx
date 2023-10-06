@@ -5,7 +5,6 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Button } from '@mui/material';
 const EcommerceBanner = () => {
     const [showSecondContent, setShowSecondContent] = useState(false);
-
     const toggleContent = () => {
         setShowSecondContent(!showSecondContent);
     };
@@ -14,7 +13,7 @@ const EcommerceBanner = () => {
         <div className='flex justify-between gap-5 p-2'>
             {/* Content for the first section */}
             <div className={`lg:w-1/2 w-full flex bg-[#EFF5F9] ${showSecondContent ? 'hidden md:flex' : 'flex '}`}>
-            <div className="w-1/2 p-4">
+                <div className="w-1/2 p-4">
                     <h6 className="text-lg font-semibold">GROCERY STORE</h6>
                     <h5 className="text-xl font-bold">Free Delivery from Your Store</h5>
                     <p className="text-gray-600 mt-2 mb-4">
@@ -28,7 +27,7 @@ const EcommerceBanner = () => {
                 {/* Arrow icon for small devices */}
                 <div className="md:hidden">
                     <button className="arrow-button font-bold  p-2 flex justify-center items-center relative top-[50%] hover:text-white hover:bg-[#22BC9E] bg-white rounded-full" onClick={toggleContent}>
-                    <FaArrowLeft />  {/* &#8592; */}
+                        <FaArrowLeft />  {/* &#8592; */}
                     </button>
                 </div>
 

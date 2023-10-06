@@ -4,6 +4,7 @@ import Reffer from '../Reffer/Reffer';
 import BestSeller from '../BestSeller/BestSeller';
 import FreshVegitable from '../FreshVegitable/FreshVegitable';
 import Chips from '../ChipsCollection/Chips';
+import Curated from '../CuratedCollection/Curated';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <BestSeller />
             <FreshVegitable />
             <Chips />
+            <Curated />
         </div>
     );
 };
