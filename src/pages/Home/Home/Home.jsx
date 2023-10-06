@@ -2,6 +2,7 @@ import React from 'react';
 import EcommerceBanner from '../Banner/EcommerceBanner';
 import Reffer from '../Reffer/Reffer';
 import BestSeller from '../BestSeller/BestSeller';
+import FreshVegitable from '../FreshVegitable/FreshVegitable';
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
             <EcommerceBanner />
             <Reffer />
             <BestSeller />
+            <FreshVegitable />
         </div>
     );
 };
