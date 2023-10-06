@@ -10,7 +10,7 @@ import img1 from '../../../assets/vagitable05.png';
 import img2 from '../../../assets/vagitable09.png';
 import img3 from '../../../assets/vagitable10.png';
 
-const FreshVegitable = () => {
+const Chips = () => {
     const swiperRef = useRef(null);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
@@ -83,6 +83,7 @@ const FreshVegitable = () => {
         // Add more items here
     ]
 
+
     const goPrev = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
             swiperRef.current.swiper.slidePrev();
@@ -106,13 +107,13 @@ const FreshVegitable = () => {
     return (
         <div className='bg-white p-2'>
             <div className='bg-white my-5 text-2xl font-semibold'>
-                <h3>Fresh vegetables</h3>
+                <h3>Chips collection</h3>
             </div>
             <Swiper
                 ref={swiperRef}
                 breakpoints={{
                     576: {
-                        slidesPerView: 2, 
+                        slidesPerView: 2, // Display 2 cards on small devices
                     },
                     768: {
                         slidesPerView: 3,
@@ -141,7 +142,7 @@ const FreshVegitable = () => {
                                 {item.label}
                             </button>
                             <div className="image-container">
-                                <img src={img1} alt="" className="imags" />
+                                <img src={img3} alt="" className="imags" />
                                 <div>
                                     <button
                                         className='btn border-none btn-sm absolute rounded-full lg:right-4 mb-1 bg-[#02B290] hover:bg-lime-600'
@@ -183,4 +184,4 @@ const FreshVegitable = () => {
     );
 };
 
-export default FreshVegitable;
+export default Chips;

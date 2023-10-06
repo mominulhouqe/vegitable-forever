@@ -1,30 +1,19 @@
 import React, { useRef, useState } from 'react';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-
-import './BestSeller.css'
-
-// import required modules
-import { Pagination, Navigation } from 'swiper/modules';
-
-import { FaEye } from 'react-icons/fa';
+import '../BestSeller/BestSeller.css';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import img1 from '../../../assets/vagitable05.png'
-import { Button, Modal } from '@mui/material'; // Assuming you have a Modal component
+import { Button, Modal } from '@mui/material';
 import { Link } from 'react-router-dom';
+import img1 from '../../../assets/vagitable05.png';
+import img2 from '../../../assets/vagitable09.png';
+import img3 from '../../../assets/vagitable10.png';
 
 const BestSeller = () => {
     const swiperRef = useRef(null);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
-    // Step 1: Create state to keep track of item counts
-    const [itemCounts, setItemCounts] = useState({});
-    const [modalOpen, setModalOpen] = useState(false); // Step 1: Create state for modal
-    const [selectedItem, setSelectedItem] = useState(null); // Step 3: Store selected item data
 
     const items = [
         {
@@ -97,9 +86,9 @@ const BestSeller = () => {
     const goPrev = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
             swiperRef.current.swiper.slidePrev();
-            setIsEnd(false); // Enable "Next" button after going back
+            setIsEnd(false);
             if (swiperRef.current.swiper.isBeginning) {
-                setIsBeginning(true); // Disable "Previous" button if at the beginning
+                setIsBeginning(true);
             }
         }
     };
@@ -107,36 +96,11 @@ const BestSeller = () => {
     const goNext = () => {
         if (swiperRef.current && swiperRef.current.swiper) {
             swiperRef.current.swiper.slideNext();
-            setIsBeginning(false); // Enable "Previous" button after going forward
+            setIsBeginning(false);
             if (swiperRef.current.swiper.isEnd) {
-                setIsEnd(true); // Disable "Next" button if at the end
+                setIsEnd(true);
             }
         }
-    }
-
-    // Step 2: Function to increment item count
-    const incrementItemCount = (itemId) => {
-        setItemCounts((prevCounts) => ({
-            ...prevCounts,
-            [itemId]: (prevCounts[itemId] || 0) + 1,
-        }));
-    };
-
-    // Step 3: Function to decrement item count
-    const decrementItemCount = (itemId) => {
-        setItemCounts((prevCounts) => ({
-            ...prevCounts,
-            [itemId]: Math.max((prevCounts[itemId] || 0) - 1, 0),
-        }));
-    };
-
-    const openModal = (item) => { // Step 2: Function to open the modal
-        setSelectedItem(item);
-        setModalOpen(true);
-    };
-
-    const closeModal = () => { // Optional: Function to close the modal
-        setModalOpen(false);
     };
 
     return (
@@ -147,25 +111,17 @@ const BestSeller = () => {
             <Swiper
                 ref={swiperRef}
                 breakpoints={{
-                    // When window width is <= 576px
                     576: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
+                        slidesPerView: 2, 
                     },
-                    // When window width is <= 768px
                     768: {
                         slidesPerView: 3,
-                        spaceBetween: 10,
                     },
-                    // When window width is <= 992px
                     992: {
                         slidesPerView: 3,
-                        spaceBetween: 20,
                     },
-                    // When window width is <= 1200px
                     1200: {
                         slidesPerView: 4,
-                        spaceBetween: 17,
                     },
                 }}
                 navigation={{
@@ -180,16 +136,15 @@ const BestSeller = () => {
             >
                 {items.map((item, index) => (
                     <SwiperSlide key={index}>
-                        <div className="border rounded-md shadow-2xl p-2">
-                            <button className="bg-[#02B290] text-sm text-white border rounded-xl relative right-28 btn-sm ">
+                        <div className="rounded-md shadow-md p-1 card">
+                            <button className="bg-[#02B290] text-xs text-white border rounded-full px-2 py-1 absolute top-2 right-2">
                                 {item.label}
                             </button>
                             <div className="image-container">
-                                <img src={img1} alt="" className="imags  lg:relative" />
+                                <img src={img3} alt="" className="imags" />
                                 <div>
                                     <button
-                                        className='btn border-none btn-sm absolute rounded-full lg:right-6  mb-2 bg-[#02B290] hover:bg-lime-600 '
-                                        onClick={() => openModal(item)} // Step 5: Open the modal
+                                        className='btn border-none btn-sm absolute rounded-full lg:right-4 mb-1 bg-[#02B290] hover:bg-lime-600'
                                     >
                                         +
                                     </button>
@@ -197,23 +152,16 @@ const BestSeller = () => {
                             </div>
 
                             <div>
-                                <div className="flex gap-3 my-4">
-                                    <h6 className='font-semibold'>$ {item.price}</h6>
-                                    <h6 className="line-through  text-slate-400 text-sm">$ {item.originalPrice}</h6>
+                                <div className="flex gap-1 my-1">
+                                    <h6 className='font-semibold text-sm'>$ {item.price}</h6>
+                                    <h6 className="line-through text-slate-400 text-xs">$ {item.originalPrice}</h6>
                                 </div>
-                                <p className='text-sm text-left'>{item.name}</p>
-                                <p className='text-sm text-left text-slate-600 my-2'>{item.quantity}</p>
+                                <p className='text-xs text-left'>{item.name}</p>
+                                <p className='text-xs text-left text-slate-600 my-1'>{item.quantity}</p>
                             </div>
-
                         </div>
                     </SwiperSlide>
                 ))}
-                
-                <SwiperSlide>
-                    <div className='link justify-center items-center mt-[50%] text-[#02B290] '>
-                        <Link to='/'> <FaArrowRight className='rounded-full bg-slate-50' /> See all</Link>
-                    </div>
-                </SwiperSlide>
             </Swiper>
             <div className='flex justify-center my-2'>
                 <button

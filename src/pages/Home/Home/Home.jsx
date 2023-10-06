@@ -3,6 +3,7 @@ import EcommerceBanner from '../Banner/EcommerceBanner';
 import Reffer from '../Reffer/Reffer';
 import BestSeller from '../BestSeller/BestSeller';
 import FreshVegitable from '../FreshVegitable/FreshVegitable';
+import Chips from '../ChipsCollection/Chips';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Reffer />
             <BestSeller />
             <FreshVegitable />
+            <Chips />
         </div>
     );
 };
