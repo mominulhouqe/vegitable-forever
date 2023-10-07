@@ -10,7 +10,7 @@ import img1 from '../../../assets/vagitable05.png';
 import img2 from '../../../assets/vagitable09.png';
 import img3 from '../../../assets/vagitable10.png';
 
-const   Chips = () => {
+const Cookies = () => {
     const sliderRef = useRef(null);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
@@ -120,7 +120,7 @@ const   Chips = () => {
     return (
         <div className='bg-white p-2'>
             <div className='bg-white my-5 text-2xl font-semibold'>
-                <h3>Chips collection</h3>
+                <h3>Cookies & Cakes</h3>
             </div>
             <Slider ref={sliderRef} {...settings} className='mySlider bg-white'>
                 {items.map((item, index) => (
@@ -145,7 +145,7 @@ const   Chips = () => {
                             </div>
 
                             <div>
-                                <div className='flex gap-1 my-1'>
+                                <div className='flex  gap-1 my-1'>
                                     <h6 className='font-semibold text-sm'>$ {item.price}</h6>
                                     <h6 className='line-through text-slate-400 text-xs'>$ {item.originalPrice}</h6>
                                 </div>
@@ -160,4 +160,4 @@ const   Chips = () => {
     );
 };
 
-export default  Chips;
+export default Cookies;

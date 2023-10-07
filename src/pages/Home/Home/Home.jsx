@@ -8,6 +8,7 @@ import Curated from '../CuratedCollection/Curated';
 import Download from '../Downloads/Download';
 import PromotionalBanner from '../Promotion/PromotionalBanner';
 import WhisList from '../WhistList/WhistList';
+import Cookies from '../Cookies/Cookies';
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
             <Curated />
             {/* <PromotionalBanner />
             <WhisList /> */}
+            <Cookies />
             <Download />
 
         </div>
