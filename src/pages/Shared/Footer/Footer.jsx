@@ -9,71 +9,69 @@ import {
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import Copyright from './Copyright';
 
 const footerStyle = {
-  background: 'linear-gradient(to bottom, rgb(125, 60, 152), black)',
-  color: '#fff',
+  background: '',
+  color: '#333',
   padding: '32px 0',
-  textAlign: 'center',
-  animation: 'fadeIn 2s',
 };
 
 const iconStyle = {
-  color: 'white',
+  color: '#333',
   marginRight: '16px',
 };
 
 const Footer = () => {
   return (
-    <footer style={footerStyle}>
-      <Container maxWidth="lg">
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6} md={3}>
-            <Typography variant="h6" style={{ marginBottom: '16px' }}>
+    <footer style={footerStyle} className='bg-base-100'>
+      <Container maxWidth="lg" >
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 py-6 container mx-auto">
+          <div className="mb-6">
+            <Typography variant="h6" className="mb-4">
               Contact Us
             </Typography>
-            <Typography variant="body2" style={{ marginBottom: '8px' }}>
+            <Typography variant="body2" className="mb-2">
               Email: info@example.com
             </Typography>
-            <Typography variant="body2" style={{ marginBottom: '8px' }}>
+            <Typography variant="body2" className="mb-2">
               Phone: +1 (123) 456-7890
             </Typography>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Typography variant="h6" style={{ marginBottom: '16px' }}>
+          </div>
+          <div className="mb-6">
+            <Typography variant="h6" className="mb-4">
               Quick Links
             </Typography>
-            <Link href="/about" color="inherit" style={{ display: 'block', marginBottom: '8px' }}>
+            <Link href="/about" color="inherit" className="mb-2 block">
               About Us
             </Link>
-            <Link href="/products" color="inherit" style={{ display: 'block', marginBottom: '8px' }}>
+            <Link href="/products" color="inherit" className="mb-2 block">
               Products
             </Link>
-            <Link href="/contact" color="inherit" style={{ display: 'block', marginBottom: '8px' }}>
+            <Link href="/contact" color="inherit" className="mb-2 block">
               Contact Us 
             </Link>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Typography variant="h6" style={{ marginBottom: '16px' }}>
+          </div>
+          <div className="mb-6">
+            <Typography variant="h6" className="mb-4">
               Support
             </Typography>
-            <Link href="/faq" color="inherit" style={{ display: 'block', marginBottom: '8px' }}>
+            <Link href="/faq" color="inherit" className="mb-2 block">
               FAQ
             </Link>
-            <Link href="/shipping" color="inherit" style={{ display: 'block', marginBottom: '8px' }}>
+            <Link href="/shipping" color="inherit" className="mb-2 block">
               Shipping
             </Link>
-            <Link href="/returns" color="inherit" style={{ display: 'block', marginBottom: '8px' }}>
+            <Link href="/returns" color="inherit" className="mb-2 block">
               Returns
             </Link>
-          </Grid>
-          
-          <Grid item xs={12} sm={6} md={3}>
-            <Typography variant="h6" style={{ marginBottom: '16px' }}>
+          </div>
+          <div className="mb-6">
+            <Typography variant="h6" className="mb-4">
               Follow Us
             </Typography>
-            <Grid container spacing={2}>
-              <Grid item>
+            <div className="grid grid-cols-3 gap-4">
+              <div>
                 <IconButton
                   component={Link}
                   href="https://www.facebook.com/"
@@ -83,8 +81,8 @@ const Footer = () => {
                 >
                   <FacebookIcon />
                 </IconButton>
-              </Grid>
-              <Grid item>
+              </div>
+              <div>
                 <IconButton
                   component={Link}
                   href="https://twitter.com/"
@@ -94,8 +92,8 @@ const Footer = () => {
                 >
                   <TwitterIcon />
                 </IconButton>
-              </Grid>
-              <Grid item>
+              </div>
+              <div>
                 <IconButton
                   component={Link}
                   href="https://www.instagram.com/"
@@ -105,11 +103,13 @@ const Footer = () => {
                 >
                   <InstagramIcon />
                 </IconButton>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+              </div>
+            </div>
+          </div>
+        </div>
       </Container>
+      <hr />
+      <Copyright />
     </footer>
   );
 };
