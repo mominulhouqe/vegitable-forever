@@ -16,6 +16,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FaFileSignature, FaFilter, FaSatelliteDish } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const AllProducts = () => {
     const [isDrawerOpen, setDrawerOpen] = useState(false);
@@ -80,8 +81,9 @@ const AllProducts = () => {
                 <Button onClick={toggleDrawer}>
                     <TuneIcon />
                 </Button>
-            </div>4
+            </div>
             <div className="p-4 hidden lg:block"> {/* Hide on small devices */}
+        <h3 className='text-xl font-bold'>Categories</h3>
                 <div className="">
                     <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                         <AccordionSummary
@@ -89,14 +91,71 @@ const AllProducts = () => {
                             aria-controls="panel1bh-content"
                             id="panel1bh-header"
                         >
-                            <Typography sx={{ width: '33%', flexShrink: 0 }}>General settings</Typography>
+                            <Typography sx={{ width: '100%', flexShrink: 0 }}>General settings</Typography>
 
                         </AccordionSummary>
                         <AccordionDetails>
-                            <Typography>
-                                Nulla facilisi. Phasellus sollicitudin .
-                            </Typography>
+                            <Link to="/">
+                                <Typography className='text-gray-500'>
+                                    Nulla facilisi. Phasellus .
+                                </Typography>
+                            </Link>
                         </AccordionDetails>
+                    </Accordion>
+
+                    <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1bh-content"
+                            id="panel1bh-header"
+                        >
+                            <Typography sx={{ width: '100%', flexShrink: 0 }}>General settings</Typography>
+
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Link to="/">
+                                <Typography className='text-gray-500'>
+                                    Nulla facilisi. Phasellus .
+                                </Typography>
+                            </Link>
+                        </AccordionDetails>
+                    </Accordion>
+                    <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1bh-content"
+                            id="panel1bh-header"
+                        >
+                            <Typography sx={{ width: '100%', flexShrink: 0 }}>General settings</Typography>
+
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Link to="/">
+                                <Typography className='text-gray-500'>
+                                    Nulla facilisi. Phasellus .
+                                </Typography>
+                            </Link>
+                        </AccordionDetails>
+                    </Accordion>
+
+                    <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1bh-content"
+                            id="panel1bh-header"
+                        >
+                            <Typography sx={{ width: '100%', flexShrink: 0 }}>General settings</Typography>
+
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Link to="/">
+                                <Typography className='text-gray-500'>
+                                    Nulla facilisi. Phasellus .
+                                </Typography>
+                            </Link>
+                        </AccordionDetails>
+
                     </Accordion>
 
                     {/* Add more accordions as needed */}
@@ -145,22 +204,82 @@ const AllProducts = () => {
             <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
                 <List>
                     <ListItem button>
-                        <div className="">
+                        <div className="bg-white">
+                        <h3 className='text-xl font-bold'>Categories</h3>
                             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                                 <AccordionSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel1bh-content"
                                     id="panel1bh-header"
                                 >
-                                    <Typography sx={{ width: '43%', flexShrink: 0 }}>General settings</Typography>
+                                    <Typography sx={{ width: '100%', flexShrink: 0 }}>General settings</Typography>
 
                                 </AccordionSummary>
                                 <AccordionDetails>
-                                    <Typography>
-                                        Nulla facilisi. Phasellus .
-                                    </Typography>
+                                    <Link to="/">
+                                        <Typography className='text-gray-500'>
+                                            Nulla facilisi. Phasellus .
+                                        </Typography>
+                                    </Link>
                                 </AccordionDetails>
                             </Accordion>
+
+                            <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1bh-content"
+                                    id="panel1bh-header"
+                                >
+                                    <Typography sx={{ width: '100%', flexShrink: 0 }}>General settings</Typography>
+
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Link to="/">
+                                        <Typography className='text-gray-500'>
+                                            Nulla facilisi. Phasellus .
+                                        </Typography>
+                                    </Link>
+                                </AccordionDetails>
+                            </Accordion>
+                            <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1bh-content"
+                                    id="panel1bh-header"
+                                >
+                                    <Typography sx={{ width: '100%', flexShrink: 0 }}>General settings</Typography>
+
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Link to="/">
+                                        <Typography className='text-gray-500'>
+                                            Nulla facilisi. Phasellus .
+                                        </Typography>
+                                    </Link>
+                                </AccordionDetails>
+                            </Accordion>
+
+                            <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1bh-content"
+                                    id="panel1bh-header"
+                                >
+                                    <Typography sx={{ width: '100%', flexShrink: 0 }}>General settings</Typography>
+
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Link to="/">
+                                        <Typography className='text-gray-500'>
+                                            Nulla facilisi. Phasellus .
+                                        </Typography>
+                                    </Link>
+                                </AccordionDetails>
+
+                            </Accordion>
+
+
                         </div>
                     </ListItem>
                     {/* Add more menu items as needed */}
