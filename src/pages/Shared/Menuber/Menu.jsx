@@ -30,16 +30,24 @@ const Menu = () => {
            <div>
             <ul className='flex gap-2'>
               <li>
-                <Link to='/'>Home</Link>
+              <IconButton color="inherit">
+               <Link to='/' >Home</Link>
+                </IconButton>
               </li>
               <li>
-                <Link to='/'>Categories</Link>
+               <IconButton color="inherit">
+               <Link to='/categories' >Categories</Link> </IconButton>
+
               </li>
               <li>
-                <Link to='/'>Dietary</Link>
+              <IconButton color="inherit">
+               <Link to='/dietary' >Dietary</Link>
+                </IconButton>
               </li>
               <li>
-                <Link to='/'>Shops</Link>
+              <IconButton color="inherit">
+               <Link to='/shops' >Shops</Link>
+                </IconButton>
               </li>
             </ul>
            </div>
