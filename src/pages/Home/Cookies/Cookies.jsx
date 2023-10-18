@@ -74,7 +74,7 @@ const Cookies = () => {
         {
             id: 3,
             label: 'REGULAR',
-            price: 54,
+            price: 554,
             originalPrice: 4,
             name: 'Fresh Green Leaf Lettuce',
             quantity: '1 each',

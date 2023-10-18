@@ -10,6 +10,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import Copyright from './Copyright';
+import Subscribe from './Subscribe';
 
 const footerStyle = {
   background: '',
@@ -26,7 +27,7 @@ const Footer = () => {
   return (
     <footer style={footerStyle} className='bg-base-100'>
       <Container maxWidth="lg" >
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 py-6 container mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-4 py-6 container mx-auto">
           <div className="mb-6">
             <Typography variant="h6" className="mb-4">
               Contact Us
@@ -49,7 +50,7 @@ const Footer = () => {
               Products
             </Link>
             <Link href="/contact" color="inherit" className="mb-2 block">
-              Contact Us 
+              Contact Us
             </Link>
           </div>
           <div className="mb-6">
@@ -104,11 +105,18 @@ const Footer = () => {
                   <InstagramIcon />
                 </IconButton>
               </div>
+
             </div>
+          </div>
+          <div className='mb-6'>
+
+            <Subscribe />
           </div>
         </div>
       </Container>
+
       <hr />
+
       <Copyright />
     </footer>
   );
