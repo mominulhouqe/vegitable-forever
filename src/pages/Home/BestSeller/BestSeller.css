@@ -1,57 +1,15 @@
-#app {
-    height: 100%;
-  }
-  html,
-  body {
-    position: relative;
-    height: 100%;
-  }
-  
-  body {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+
   .image-container {
     overflow: hidden;
-    width: 200px; /* Adjust the container width as needed */
-    height: 150px; /* Adjust the container height as needed */
-
-
   }
 
 .imags {
-    width: 100%;
-    height: 100%;
+ 
     transition: transform 0.5s; /* Smooth transition for zoom effect */
 }
 
 .imags:hover {
-    transform: scale(1.2); /* Increase the scale value for more zoom */
+    transform: scale(1.1); /* Increase the scale value for more zoom */
 }
 
 

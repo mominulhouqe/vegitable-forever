@@ -1,163 +1,123 @@
-import React, { useRef, useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import '../BestSeller/BestSeller.css';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import { Button, Modal } from '@mui/material';
-import { Link } from 'react-router-dom';
-import img1 from '../../../assets/vagitable05.png';
-import img2 from '../../../assets/vagitable09.png';
-import img3 from '../../../assets/vagitable10.png';
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+
+// import required modules
+import { FreeMode, Pagination } from "swiper/modules";
+import img1 from "../../../assets/vagitable05.png";
+import img2 from "../../../assets/vagitable09.png";
+import img3 from "../../../assets/vagitable10.png";
 
 const FreshVegitable = () => {
-    const sliderRef = useRef(null);
-    const [isBeginning, setIsBeginning] = useState(true);
-    const [isEnd, setIsEnd] = useState(false);
-    const [currentSlide, setCurrentSlide] = useState(0);
+  const items = [
+    {
+      id: 1,
+      label: "ON SALE",
+      price: 54,
+      originalPrice: 4,
+      name: "Fresh Green Leaf Lettuce",
+      quantity: "1 each",
+    },
+    {
+      id: 2,
+      label: "ON SALE",
+      price: 54,
+      originalPrice: 4,
+      name: "Fresh Green Leaf Lettuce",
+      quantity: "1 each",
+    },
+    {
+      id: 3,
+      label: "REGULAR",
+      price: 54,
+      originalPrice: 4,
+      name: "Fresh Green Leaf Lettuce",
+      quantity: "1 each",
+    },
+    {
+      id: 4,
+      label: "REGULAR",
+      price: 54,
+      originalPrice: 4,
+      name: "Fresh Green Leaf Lettuce",
+      quantity: "1 each",
+    },
+    {
+      id: 5,
+      label: "REGULAR",
+      price: 554,
+      originalPrice: 4,
+      name: "Fresh Green Leaf Lettuce",
+      quantity: "1 each",
+    },
+    // Add more items here
+  ];
 
-    const goPrev = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickPrev();
-            setIsEnd(false);
-            if (sliderRef.current.slickIsFirst()) {
-                setIsBeginning(true);
-            }
-            setCurrentSlide(sliderRef.current.innerSlider.state.currentSlide);
-        }
-    };
+  return (
+    <div className="bg-white p-2">
+      <div className="bg-white my-5 text-2xl font-semibold">
+      <h3>Fresh vegetables</h3>
+      </div>
 
-    const goNext = () => {
-        if (sliderRef.current) {
-            sliderRef.current.slickNext();
-            setIsBeginning(false);
-            if (sliderRef.current.slickIsLast()) {
-                setIsEnd(true);
-            }
-            setCurrentSlide(sliderRef.current.innerSlider.state.currentSlide);
-        }
-    };
+      <Swiper
+        slidesPerView={2}
+        spaceBetween={30}
+        freeMode={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[FreeMode, Pagination]}
+        className="mySwiper"
+        breakpoints={{
+          768: {
+            slidesPerView: 4, // Display 2 slides per view on devices with width >= 768px
+          },
+        }}
+      >
+          {items.map((item) => (
+          <SwiperSlide key={item.id}>
+            <div className="rounded-lg shadow-md p-4 card flex flex-col justify-between items-center bg-gray-50 border mb-6">
+              {item.label === "ON SALE" && (
+                <button className="bg-green-500 text-xs text-white border rounded-full px-2 py-1 absolute top-2 right-2">
+                  {item.label}
+                </button>
+              )}
+              <div className="overflow-hidden mb-4">
+                <img
+                  src={img1}
+                  alt=""
+                  className="object-cover w-full rounded-full scale-75 translate-x-2 skew-y-1 md:transform-none transition duration-700 ease-in-out transform hover:scale-110"
+                />
+                {item.label === "REGULAR" && (
+                  <div>
+                    <button className="bg-green-500 text-base text-white border rounded-full px-2 py-1 absolute bottom-4 right-2">
+                      + 
+                    </button>
+                  </div>
+                )}
+              </div>
 
-    const items = [
-        {
-            id: 1,
-            label: 'ON SALE',
-            price: 54,
-            originalPrice: 4,
-            name: 'Fresh Green Leaf Lettuce',
-            quantity: '1 each',
-        },
-        {
-            id: 2,
-            label: 'ON SALE',
-            price: 54,
-            originalPrice: 4,
-            name: 'Fresh Green Leaf Lettuce',
-            quantity: '1 each',
-        },
-        {
-            id: 3,
-            label: 'REGULAR',
-            price: 54,
-            originalPrice: 4,
-            name: 'Fresh Green Leaf Lettuce',
-            quantity: '1 each',
-        },
-        {
-            id: 3,
-            label: 'REGULAR',
-            price: 54,
-            originalPrice: 4,
-            name: 'Fresh Green Leaf Lettuce',
-            quantity: '1 each',
-        },
-        {
-            id: 3,
-            label: 'REGULAR',
-            price: 54,
-            originalPrice: 4,
-            name: 'Fresh Green Leaf Lettuce',
-            quantity: '1 each',
-        },
-        // Add more items here
-    ];
-
-    const settings = {
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        dots: true,
-        prevArrow: <button onClick={goPrev} className={`bg-white hover:text-white hover:bg-[#02B290] border shadow-md rounded-full px-4 py-2 mr-2 ${isBeginning ? 'bg-gray-300 cursor-not-allowed' : ''}`} disabled={isBeginning}><FaArrowLeft /></button>,
-        nextArrow: <button onClick={goNext} className={`bg-white shadow-md border hover:text-white hover:bg-[#02B290] rounded-full px-4 py-2 ${isEnd ? 'bg-gray-300 cursor-not-allowed' : ''}`} disabled={isEnd}><FaArrowRight /></button>,
-        afterChange: (current) => setCurrentSlide(current), // Update the current slide when it changes
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 4,
-                },
-            },
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 3,
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                },
-            },
-            {
-                breakpoint: 576,
-                settings: {
-                    slidesToShow: 2,
-                },
-            },
-        ],
-    };
-
-    return (
-        <div className='bg-white p-2'>
-            <div className='bg-white my-5 text-2xl font-semibold'>
-                <h3>Fresh vegetables</h3>
+              <div className="text-center">
+                <div className="flex justify-center items-center mb-2">
+                  <h6 className="font-semibold text-lg">$ {item.price}</h6>
+                  <span className="line-through text-gray-500 text-xs ml-2">
+                    $ {item.originalPrice}
+                  </span>
+                </div>
+                <p className="text-sm font-medium">{item.name}</p>
+                <p className="text-xs text-gray-600">{item.quantity}</p>
+              </div>
             </div>
-            <Slider ref={sliderRef} {...settings} className='mySlider bg-white'>
-                {items.map((item, index) => (
-                    <div key={index}>
-                        <div className='rounded-md shadow-md p-1 card flex justify-center items-center'>
-                            {item.label === 'ON SALE' && (
-                                <button className='bg-[#02B290] text-xs text-white border rounded-full px-2 py-1 absolute top-2 right-2'>
-                                    {item.label}
-                                </button>
-                            )}
-                            <div className='image-container'>
-                                <img src={img3} alt='' className='imags' />
-                                {item.label === 'REGULAR' && (
-                                    <div>
-                                        <button
-                                            className='btn border-none btn-sm absolute rounded-full right-4 mb-1 bg-[#02B290] hover:bg-lime-600'
-                                        >
-                                            +
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-
-                            <div>
-                                <div className='flex gap-1 my-1'>
-                                    <h6 className='font-semibold text-sm'>$ {item.price}</h6>
-                                    <h6 className='line-through text-slate-400 text-xs'>$ {item.originalPrice}</h6>
-                                </div>
-                                <p className='text-xs text-left'>{item.name}</p>
-                                <p className='text-xs text-left text-slate-600 my-1'>{item.quantity}</p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </Slider>
-        </div>
-    );
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
 };
 
 export default FreshVegitable;

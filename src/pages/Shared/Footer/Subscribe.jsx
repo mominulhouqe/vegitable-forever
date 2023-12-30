@@ -41,7 +41,7 @@ const Subscribe = () => {
                 <form onSubmit={handleSubmit} className="space-y-4 ">
                     <TextField
                         type="email"
-                        label="Write your email here"
+                        label="Write your email"
                         variant="outlined"
                         fullWidth
                         value={email}
